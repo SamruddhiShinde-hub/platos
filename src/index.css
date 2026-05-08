@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+:root {
+  font-family: 'Epilogue', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: #1c1b1b;
+  background-color: #fcf9f8;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+@layer components {
+  .glassmorphism {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-xl;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white px-8 py-4 rounded-full font-semibold transition-all hover:shadow-lg hover:-translate-y-0.5 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white px-8 py-4 rounded-full font-semibold transition-all hover:shadow-lg hover:-translate-y-0.5 active:scale-95;
+  }
+}
