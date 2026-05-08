@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Star, Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import squidImage from '../assets/squid.png';
+import loukoumadesImage from '../assets/loukoumades.png';
 
 const categories = [
   { id: 'yiros', name: 'Yiros in Pita', image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&q=80&w=800' },
@@ -23,7 +25,7 @@ const recommendations = [
     name: 'Salt & Pepper Squid',
     description: 'Crispy local squid, seasoned with our signature spice blend, served with fresh lemon.',
     price: 32.00,
-    image: 'https://images.unsplash.com/photo-1590594460041-9960235c6751?auto=format&fit=crop&q=80&w=800',
+    image: squidImage,
     rating: 4.8,
   },
   {
@@ -39,7 +41,7 @@ const recommendations = [
     name: 'Golden Loukoumades',
     description: 'Traditional Greek donuts soaked in honey syrup, topped with crushed walnuts and cinnamon.',
     price: 15.00,
-    image: 'https://images.unsplash.com/photo-1621801306185-df0480351785?auto=format&fit=crop&q=80&w=800',
+    image: loukoumadesImage,
     rating: 4.9,
   }
 ];

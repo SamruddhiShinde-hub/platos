@@ -2,6 +2,8 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Plus } from 'lucide-react';
 import { useCartStore } from '../store/useCartStore';
+import squidImage from '../assets/squid.png';
+import loukoumadesImage from '../assets/loukoumades.png';
 
 const products = [
   {
@@ -80,7 +82,7 @@ const products = [
     description: 'Tender squid rings lightly dusted in salt and pepper flour, flash-fried and served with lemon.',
     price: 32.00,
     category: 'seafood',
-    image: 'https://images.unsplash.com/photo-1590594460041-9960235c6751?auto=format&fit=crop&q=80&w=800',
+    image: squidImage,
     tags: ['Fresh'],
     dietary: ['gluten-free']
   },
@@ -100,7 +102,7 @@ const products = [
     description: 'Bite-sized Greek donuts, served warm with honey syrup, cinnamon, and walnuts.',
     price: 15.00,
     category: 'desserts',
-    image: 'https://images.unsplash.com/photo-1621801306185-df0480351785?auto=format&fit=crop&q=80&w=800',
+    image: loukoumadesImage,
     tags: ['Sweet'],
     dietary: ['vegetarian']
   },
