@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Lock, CreditCard, ChevronRight, CheckCircle2, ArrowLeft } from 'lucide-react';
+import { Lock, CreditCard, ChevronRight, CheckCircle2, ArrowLeft, Trash2, Minus, Plus } from 'lucide-react';
 import { useCartStore } from '../store/useCartStore';
 
 export const Checkout = () => {
   const navigate = useNavigate();
-  const { items, subtotal, deliveryFee, tax, total, clearCart } = useCartStore();
+  const { items, subtotal, deliveryFee, tax, total, clearCart, removeItem, updateQuantity } = useCartStore();
   const [step, setStep] = React.useState(1);
   const [isDelivery, setIsDelivery] = React.useState(true);
 
@@ -208,15 +208,40 @@ export const Checkout = () => {
               <h3 className="text-xl md:text-2xl font-black text-primary mb-6 md:mb-8 border-b border-surface pb-4">Order Summary</h3>
               
               <div className="flex flex-col gap-4 md:gap-6 mb-8 md:mb-10 max-h-[40vh] lg:max-h-[50vh] overflow-y-auto pr-2 no-scrollbar">
-                {items.map((item, i) => (
-                  <div key={i} className="flex gap-4">
+                {items.map((item) => (
+                  <div key={item.id} className="flex gap-4">
                     <img src={item.thumbnail} alt={item.name} className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl object-cover shrink-0" />
-                    <div className="flex-1">
-                      <div className="flex justify-between items-start">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex justify-between items-start gap-2">
                         <h4 className="font-bold text-primary text-sm md:text-base line-clamp-1">{item.name}</h4>
+                        <button
+                          onClick={() => removeItem(item.id)}
+                          className="shrink-0 text-on-surface-variant hover:text-secondary transition-colors p-0.5"
+                          aria-label="Remove item"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                      <div className="flex items-center justify-between mt-2">
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                            className="w-6 h-6 rounded-full border border-surface flex items-center justify-center text-primary hover:border-primary transition-colors"
+                            aria-label="Decrease quantity"
+                          >
+                            <Minus className="w-3 h-3" />
+                          </button>
+                          <span className="text-sm font-bold text-primary w-4 text-center">{item.quantity}</span>
+                          <button
+                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            className="w-6 h-6 rounded-full border border-surface flex items-center justify-center text-primary hover:border-primary transition-colors"
+                            aria-label="Increase quantity"
+                          >
+                            <Plus className="w-3 h-3" />
+                          </button>
+                        </div>
                         <span className="font-bold text-primary text-sm">${(item.price * item.quantity).toFixed(2)}</span>
                       </div>
-                      <p className="text-[10px] md:text-xs text-on-surface-variant mt-0.5">Qty: {item.quantity}</p>
                     </div>
                   </div>
                 ))}
